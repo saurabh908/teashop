@@ -65,25 +65,41 @@ const useStyles = makeStyles((theme) => ({
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function useFetch(url, opts) {
-    const [response, setResponse] = useState(null);
+    const [inventories, setInventories] = useState([]);
+    // const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
+    // useEffect(() => {
+    //     setLoading(true)
+    //     fetch(url, opts)
+    //         .then((res) => {
+    //         setResponse(res.data)
+    //         setLoading(false)
+    //     })
+    //         .catch(() => {
+    //             setHasError(true)
+    //             setLoading(false)
+    //         })
+    // }, [ url ])
+
     useEffect(() => {
-        setLoading(true)
-        fetch(url, opts)
-            .then((res) => {
-            setResponse(res.data)
-            setLoading(false)
-        })
-            .catch(() => {
-                setHasError(true)
-                setLoading(false)
-            })
-    }, [ url ])
-    return [ response, loading, hasError ]
+    (async () => {
+      try{
+        setLoading(true);
+        const users = await axios.get(API.baseURL);
+        setInventories(users.data);
+        setLoading(false);
+      }catch(error){
+        setHasError(true);
+        setLoading(false);
+      }
+    })();
+    }, []);
+    
+    return [ inventories, loading, hasError ]
 }
 
-export const TeaShopCard = ({inventories}) => {
+export const TeaShopCard = ({inventories, loading, hasError}) => {
   console.log(inventories);
   // {
   //   "id": "1",
@@ -101,7 +117,7 @@ export const TeaShopCard = ({inventories}) => {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {inventories.map((card) => (
+            {loading ? <div>Loading...</div> : (hasError ? <div>Error occured.</div> :inventories.map((card) => (
               <Grid item key={card.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -133,7 +149,7 @@ export const TeaShopCard = ({inventories}) => {
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            )))}
           </Grid>
         </Container>
     </React.Fragment>
@@ -142,15 +158,7 @@ export const TeaShopCard = ({inventories}) => {
 
 
 export default function Inventory() {
-  const [inventories, setInventories] = useState([]);
-
-  useEffect(() => {
-  (async () => {
-    const users = await axios.get(API.baseURL);
-    setInventories(users.data);
-  })();
-  }, []);
-
+  const [inventories, loading, hasError] = useFetch();
   const classes = useStyles();
 
   return (
@@ -191,9 +199,17 @@ export default function Inventory() {
           </Container>
         </div>
         {/*Tea Shop Card*/}
-        {<TeaShopCard inventories={inventories} />}
+        {<TeaShopCard inventories={inventories} loading={loading} hasError={hasError} />}
       </main>
       {/* Footer */}
+      {<Footer />}
+      {/* End footer */}
+    </React.Fragment>
+  );
+}
+export const Footer = () => {
+  const classes = useStyles();
+  return (
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
           Footer
@@ -201,10 +217,9 @@ export default function Inventory() {
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
           Something here to give the footer a purpose!
         </Typography>
-        <Copyright />
+        
+        {Copyright()}
       </footer>
-      {/* End footer */}
-    </React.Fragment>
-  );
+     
+  )
 }
-
