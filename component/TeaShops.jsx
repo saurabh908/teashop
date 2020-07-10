@@ -5,9 +5,11 @@ import * as API from '../api';
 
 function TeaShops() {
   return (
-    <Button variant="contained" color="primary" onClick={()=> API.getCollections()}>
-      Fetch Data
-    </Button>
+    <div>
+      <Button variant="contained" color="primary" onClick={()=> API.getCollections()}>
+        Fetch Data
+      </Button>
+    </div>
   );
 }
 export default TeaShops;
