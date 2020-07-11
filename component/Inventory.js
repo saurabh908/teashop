@@ -18,19 +18,6 @@ import axios from 'axios';
 import * as API from '../api';
 import * as utility from '../utility';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -97,6 +84,7 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
     
     console.log(res);
   }
+  let defaultImage = "images/TeaShopImage.jpg"
   // {
   //   "id": "1",
   //   "createdAt": "2020-07-10T16:17:07.875Z",
@@ -118,7 +106,7 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={card.imageUrl}
+                    image={defaultImage}
                     title={card.name}
                   />
                   <CardContent className={classes.cardContent}>
