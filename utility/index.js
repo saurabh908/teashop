@@ -55,7 +55,7 @@ const Copyright = () => {
   return (
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
+        <Link color="inherit" href="https://teashop.stackblitz.io">
           Sadguru's Amrit Tulya Tea Shop
         </Link>{' '}
         {new Date().getFullYear()}
@@ -68,13 +68,6 @@ export const Footer = () => {
   const classes = useStyles();
   return (
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        
         {Copyright()}
       </footer>
      
@@ -88,9 +81,8 @@ export const CustomAppBar = () => {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Album layout
+            Sadguru's Amrit Tulya Tea Shop
           </Typography>
         </Toolbar>
       </AppBar>

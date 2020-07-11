@@ -16,6 +16,7 @@ import Link from '@material-ui/core/Link';
 import axios from 'axios';
 
 import * as API from '../api';
+import * as utility from '../utility';
 
 function Copyright() {
   return (
@@ -68,13 +69,11 @@ function useFetch(url, opts) {
     const [inventories, setInventories] = useState([]);
     const [loading, setLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
-    const [alert, setAlert] = useState(false);
 
     useEffect(() => {
     (async () => {
       try{
         setLoading(true);
-        setAlert();
         const users = await axios.get(API.baseURL);
         setInventories(users.data);
         setLoading(false);
@@ -87,28 +86,6 @@ function useFetch(url, opts) {
     
     return [ inventories, loading, hasError, alert ]
 }
-
-// const HOCLoading = ContainerComponent =>class extends Component {
-//   render(){
-//     return(
-//       <ContainerComponent>
-//         <h2>Loading from HOC</h2>
-//       </ContainerComponent>
-//     )
-//   }
-// }
-
-// class MyComponent extends Component{
-//   render(){
-//     return(
-//       <Fragment>
-//         <h1>My Component</h1>
-//       </Fragment>
-//     )
-//   }
-// }
-
-// export default HOCLoading(MyComponent);
 
 export const TeaShopCard = ({inventories, loading, hasError}) => {
  const deleteRecord =(id) => {
@@ -178,22 +155,14 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
   )
 }
 
-
 export default function Inventory() {
   const [inventories, loading, hasError] = useFetch();
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      {/*Custom App Bar*/}
+      {utility.CustomAppBar()}
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -224,24 +193,9 @@ export default function Inventory() {
         {<TeaShopCard inventories={inventories} loading={loading} hasError={hasError} />}
       </main>
       {/* Footer */}
-      {<Footer />}
+      {utility.Footer()}
       {/* End footer */}
     </React.Fragment>
   );
 }
-export const Footer = () => {
-  const classes = useStyles();
-  return (
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        
-        {Copyright()}
-      </footer>
-     
-  )
-}
+
