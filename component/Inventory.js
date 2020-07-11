@@ -82,8 +82,7 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
        
     })();
     
-    console.log(res);
-  }
+      }
   let defaultImage = "images/TeaShopImage.jpg"
   // {
   //   "id": "1",
@@ -94,8 +93,9 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
   //   "isActive": true,
   //   "name": "Sadguru's Amrit-Tulya- Tea Shop 1",
   //   "imageUrl": "https://unsplash.it/50?image=1"
-  // }
+  // }img src={process.env.PUBLIC_URL + '/img/logo.png'} />
   let classes = useStyles();
+  
   return (
     <React.Fragment>
         <Container className={classes.cardGrid} maxWidth="md">
@@ -104,9 +104,10 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
             {loading ? <div>Loading...</div> : (hasError ? <div>Error occured.</div> :inventories.map((card) => (
               <Grid item key={card.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
+                
                   <CardMedia
                     className={classes.cardMedia}
-                    image={defaultImage}
+                    image={card.imageUrl}
                     title={card.name}
                   />
                   <CardContent className={classes.cardContent}>
@@ -157,6 +158,7 @@ export default function Inventory() {
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Sadguru's Amrit Tulya Tea Shop
+              <img class="DefaultLogo"></img>
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Inventory Collections
