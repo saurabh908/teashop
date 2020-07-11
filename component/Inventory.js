@@ -66,21 +66,8 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function useFetch(url, opts) {
     const [inventories, setInventories] = useState([]);
-    // const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
-    // useEffect(() => {
-    //     setLoading(true)
-    //     fetch(url, opts)
-    //         .then((res) => {
-    //         setResponse(res.data)
-    //         setLoading(false)
-    //     })
-    //         .catch(() => {
-    //             setHasError(true)
-    //             setLoading(false)
-    //         })
-    // }, [ url ])
 
     useEffect(() => {
     (async () => {
@@ -100,7 +87,15 @@ function useFetch(url, opts) {
 }
 
 export const TeaShopCard = ({inventories, loading, hasError}) => {
-  console.log(inventories);
+ const deleteRecord =(id) => {
+   (async () => {
+      
+       //await axios.delete(`${API.baseURL}/${id}`);
+       
+    })();
+    
+    console.log(res);
+  }
   // {
   //   "id": "1",
   //   "createdAt": "2020-07-10T16:17:07.875Z",
@@ -143,7 +138,10 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
                     <Button size="small" color="primary">
                       Edit
                     </Button>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" onClick={(e)=>{
+      e.stopPropagation();
+      e.preventDefault();
+      deleteRecord(card.id);}}>
                       Delete
                     </Button>
                   </CardActions>
