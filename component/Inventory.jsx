@@ -75,27 +75,7 @@ function useFetch(url, opts) {
 }
 
 export const TeaShopCard = ({inventories, loading, hasError}) => {
- const deleteRecord =(id) => {
-   (async () => {
-      
-       //await axios.delete(`${API.baseURL}/${id}`);
-       
-    })();
-    
-      }
-  let defaultImage = "images/TeaShopImage.jpg"
-  // {
-  //   "id": "1",
-  //   "createdAt": "2020-07-10T16:17:07.875Z",
-  //   "price": 40,
-  //   "description": "description 1",
-  //   "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/ssiskind/128.jpg",
-  //   "isActive": true,
-  //   "name": "Sadguru's Amrit-Tulya- Tea Shop 1",
-  //   "imageUrl": "https://unsplash.it/50?image=1"
-  // }img src={process.env.PUBLIC_URL + '/img/logo.png'} />
   let classes = useStyles();
-  
   return (
     <React.Fragment>
         <Container className={classes.cardGrid} maxWidth="md">
@@ -156,20 +136,9 @@ export default function Inventory() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Sadguru's Amrit Tulya Tea Shop
-              <img class="DefaultLogo"></img>
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Inventory Collections
-            </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Fetch Inventory Data
-                  </Button>
-                </Grid>
+                
                 <Grid item>
                   <Button variant="outlined" color="primary">
                     Add New Item
