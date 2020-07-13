@@ -31,7 +31,7 @@ async function deleteInventoryRecord(id) {
   }
 }
 
-export const baseURL ="https://5efcb20dcf235d0016ad7bc4.mockapi.io/api/v1/inventory";
+const baseURL ="https://5efcb20dcf235d0016ad7bc4.mockapi.io/api/v1/inventory";
 
 export const EndPoint ="inventory";
 

@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './style.css';
-import { ThemeProvider } from '@material-ui/core/styles';
-import theme from './theme';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import App from './component/App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./style.css";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "./theme";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import App from "./component/App";
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
@@ -12,5 +12,5 @@ ReactDOM.render(
     <CssBaseline />
     <App />
   </ThemeProvider>,
-  document.querySelector('#root'),
+  document.querySelector("#root")
 );
