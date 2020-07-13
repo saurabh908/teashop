@@ -1,18 +1,6 @@
 import React,{useState,useEffect,Component} from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import {AppBar,Button, Card, IconButton,CardActions,CardContent,CardMedia,CssBaseline,Grid,Toolbar,Typography, Container,Link} from '@material-ui/core/';
 import axios from 'axios';
 
 import * as API from '../api';
@@ -74,7 +62,7 @@ function useFetch(url, opts) {
 
 export const TeaShopCard = ({inventories, loading, hasError}) => {
   let classes = useStyles();
-  let defaultImage = 'public/images/default.jpg';
+  let defaultImage = 'images/TeaShopImage.jpg';
   return (
     <React.Fragment>
         <Container className={classes.cardGrid} maxWidth="md">
@@ -86,7 +74,7 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
                 
                   <CardMedia
                     className={classes.cardMedia}
-                    image={defaultImage}
+                    image={card.imageUrl}
                     title={card.name}
                   />
                   <CardContent className={classes.cardContent}>
@@ -126,16 +114,12 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
 export default function Inventory() {
   const [inventories, loading, hasError] = useFetch();
   const classes = useStyles();
-
   return (
     <React.Fragment>
       {/*Custom App Bar*/}
       {utility.CustomAppBar()}
-      <main>
-        
         {/*Tea Shop Card*/}
-        {<TeaShopCard inventories={inventories} loading={loading} hasError={hasError} />}
-      </main>
+        {utility.TeaShopCard({inventories,loading,hasError})}
       {/* Footer */}
       {utility.Footer()}
       {/* End footer */}

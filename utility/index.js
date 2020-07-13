@@ -90,27 +90,32 @@ export const CustomAppBar = () => {
   )
 }
 
-export const TeaShopCard = ({cards}) => {
+export const TeaShopCard = ({inventories, loading, hasError}) => {
   let classes = useStyles();
+  let defaultImage = 'images/TeaShopImage.jpg';
   return (
     <React.Fragment>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {loading ? <div>Loading...</div> : (hasError ? <div>Error occured.</div> :inventories.map((card) => (
+              <Grid item key={card.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
+                
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
+                    image={card.imageUrl}
+                    title={card.name}
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      Descriptiion: {card.description}
+                    </Typography>
+                    <Typography>
+                      Price: {card.price}
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -120,10 +125,16 @@ export const TeaShopCard = ({cards}) => {
                     <Button size="small" color="primary">
                       Edit
                     </Button>
+                    <Button size="small" color="primary" onClick={(e)=>{
+      e.stopPropagation();
+      e.preventDefault();
+      deleteRecord(card.id);}}>
+                      Delete
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            )))}
           </Grid>
         </Container>
     </React.Fragment>
