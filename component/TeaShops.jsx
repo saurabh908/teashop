@@ -1,16 +1,13 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
+import React, { Component } from 'react';
 
-import * as API from '../api';
-
-function TeaShops() {
-  return (
+class TeaShops extends Component {
+  render() {
+    return (
     <div>
-      <Button variant="contained" color="primary" onClick={()=> API.getCollections()}>
-        Fetch Data
-      </Button>
+      <h1>All Posts</h1>
     </div>
-  );
+    );
+   }
 }
-export default TeaShops;
 
+export default TeaShops;
