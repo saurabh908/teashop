@@ -66,7 +66,6 @@ function useFetch(url, opts) {
 
 export const TeaShopCard = ({inventories, loading, hasError}) => {
   let classes = useStyles();
-  let defaultImage = 'images/TeaShopImage.jpg';
   return (
     <React.Fragment>
         <Container className={classes.cardGrid} maxWidth="md">
