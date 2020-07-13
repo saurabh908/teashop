@@ -1,4 +1,4 @@
-import React,{useState,useEffect,Component, Feagment} from 'react';
+import React,{useState,useEffect,Component, Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {AppBar,Button, Card, IconButton,CardActions,CardContent,CardMedia,CssBaseline,Grid,Toolbar,Typography, Container,Link} from '@material-ui/core/';
 import axios from 'axios';
@@ -124,6 +124,7 @@ export default function Inventory() {
       <CustomAppBar />
       
         {utility.TeaShopCard({inventories,loading,hasError})}
+        
         <CustomCard inventories={inventories} loading={loading} hasError={hasError} />
      
       <CustomFooter />

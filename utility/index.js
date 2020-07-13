@@ -113,7 +113,7 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
                       {card.name}
                     </Typography>
                     <Typography>
-                      Descriptiion: {card.description}
+                      Description: {card.description}
                     </Typography>
                     <Typography>
                       Price: {card.price}

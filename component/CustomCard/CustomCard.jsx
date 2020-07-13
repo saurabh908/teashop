@@ -6,7 +6,7 @@ import * as useStyles from '../../utility/useStyles';
 const CustomCard = ({inventories, loading, hasError}) => {
   let classes = useStyles;
   return (
-    <React.Fragment>
+    <Fragment>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
@@ -49,7 +49,7 @@ const CustomCard = ({inventories, loading, hasError}) => {
             )))}
           </Grid>
         </Container>
-    </React.Fragment>
+    </Fragment>
   )
 }
 
