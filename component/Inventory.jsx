@@ -1,10 +1,14 @@
-import React,{useState,useEffect,Component} from 'react';
+import React,{useState,useEffect,Component, Feagment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {AppBar,Button, Card, IconButton,CardActions,CardContent,CardMedia,CssBaseline,Grid,Toolbar,Typography, Container,Link} from '@material-ui/core/';
 import axios from 'axios';
 
 import * as API from '../api';
 import * as utility from '../utility';
+
+import CustomAppBar from '../component/CustomAppBar';
+import CustomFooter from '../component/CustomFooter';
+import CustomCard from '../component/CustomCard';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -116,13 +120,14 @@ export default function Inventory() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      {/*Custom App Bar*/}
-      {utility.CustomAppBar()}
-        {/*Tea Shop Card*/}
+    
+      <CustomAppBar />
+      
         {utility.TeaShopCard({inventories,loading,hasError})}
-      {/* Footer */}
-      {utility.Footer()}
-      {/* End footer */}
+        <CustomCard inventories={inventories} loading={loading} hasError={hasError} />
+     
+      <CustomFooter />
+     
     </React.Fragment>
   );
 }

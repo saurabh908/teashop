@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import * as API from '../api';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -80,7 +81,7 @@ export const CustomAppBar = () => {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
            <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" noWrap>
+          <Typography variant="h6" color="inherit" noWrap style={{ flex: 1 }}>
             Sadguru's Amrit Tulya Tea Shop
           </Typography>
           <Button color="inherit">Add Item</Button>
