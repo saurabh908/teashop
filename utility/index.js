@@ -1,18 +1,7 @@
 import React, {Fragment} from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import {AppBar,Button, Card, IconButton,CardActions,CardContent,CardMedia,CssBaseline,Grid,Toolbar,Typography, Container,Link} from '@material-ui/core/';
+import {MenuIcon,CameraIcon} from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 
 import * as API from '../api';
 
@@ -26,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   },
   heroButtons: {
     marginTop: theme.spacing(4),
+  },
+  menuButton:{
+    padding: theme.spacing(4),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -47,8 +39,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
 }));
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 {/*Components Collection*/}
 const Copyright = () => {
@@ -81,9 +71,13 @@ export const CustomAppBar = () => {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
           <Typography variant="h6" color="inherit" noWrap>
             Sadguru's Amrit Tulya Tea Shop
           </Typography>
+          <Button color="inherit">Add New Item</Button>
         </Toolbar>
       </AppBar>
     </Fragment>
