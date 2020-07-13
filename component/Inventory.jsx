@@ -50,8 +50,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 function useFetch(url, opts) {
     const [inventories, setInventories] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -76,6 +74,7 @@ function useFetch(url, opts) {
 
 export const TeaShopCard = ({inventories, loading, hasError}) => {
   let classes = useStyles();
+  let defaultImage = 'public/images/default.jpg';
   return (
     <React.Fragment>
         <Container className={classes.cardGrid} maxWidth="md">
@@ -87,7 +86,7 @@ export const TeaShopCard = ({inventories, loading, hasError}) => {
                 
                   <CardMedia
                     className={classes.cardMedia}
-                    image={card.imageUrl}
+                    image={defaultImage}
                     title={card.name}
                   />
                   <CardContent className={classes.cardContent}>
@@ -133,21 +132,7 @@ export default function Inventory() {
       {/*Custom App Bar*/}
       {utility.CustomAppBar()}
       <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Add New Item
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
-        </div>
+        
         {/*Tea Shop Card*/}
         {<TeaShopCard inventories={inventories} loading={loading} hasError={hasError} />}
       </main>

@@ -1,11 +1,14 @@
 import React, {Fragment} from 'react';
 import {AppBar,Button, Card, IconButton,CardActions,CardContent,CardMedia,CssBaseline,Grid,Toolbar,Typography, Container,Link} from '@material-ui/core/';
-import {MenuIcon,CameraIcon} from '@material-ui/icons';
+import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 
 import * as API from '../api';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -17,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   menuButton:{
-    padding: theme.spacing(4),
+    marginRight: theme.spacing(2),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -37,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
+  },
+  title: {
+    flexGrow: 1,
   },
 }));
 
@@ -69,15 +75,15 @@ export const CustomAppBar = () => {
   return (
     <Fragment>
       <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
+           <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" noWrap>
             Sadguru's Amrit Tulya Tea Shop
           </Typography>
-          <Button color="inherit">Add New Item</Button>
+          <Button color="inherit">Add Item</Button>
         </Toolbar>
       </AppBar>
     </Fragment>
@@ -163,5 +169,25 @@ export const CollectionItems = () => {
       {Footer()}
       {/* End footer */}
     </React.Fragment>
+  )
+}
+
+export const HeroUnitComponent = () => {
+  let classes = useStyles();
+  return(
+        <div className={classes.heroContent}>
+          <Container maxWidth="sm">
+            <div className={classes.heroButtons}>
+              <Grid container spacing={2} justify="center">
+                
+                <Grid item>
+                  <Button variant="outlined" color="primary">
+                    Add New Item
+                  </Button>
+                </Grid>
+              </Grid>
+            </div>
+          </Container>
+        </div>
   )
 }
