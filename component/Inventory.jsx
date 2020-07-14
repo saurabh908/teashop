@@ -52,11 +52,14 @@ function useFetch(url, opts) {
       try{
         setLoading(true);
         const users = await axios.get(API.baseURL);
+        
+        console.log(users.data);
         setInventories(users.data);
         setLoading(false);
       }catch(error){
         setHasError(true);
         setLoading(false);
+        console.log(error);
       }
     })();
     }, []);
@@ -124,7 +127,6 @@ export default function Inventory() {
       
         {utility.TeaShopCard({inventories,loading,hasError})}
         
-        <CustomCard inventories={inventories} loading={loading} hasError={hasError} />
      
       <CustomFooter />
      
