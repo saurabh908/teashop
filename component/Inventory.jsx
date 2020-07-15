@@ -127,6 +127,7 @@ export default function Inventory() {
       
         {utility.TeaShopCard({inventories,loading,hasError})}
         
+        {<CustomCard inventories={inventories} loading={loading} hasError={hasError} />}
      
       <CustomFooter />
      
